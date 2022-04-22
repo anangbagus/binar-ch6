@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+    <title>User_Game - readAll</title>
+</head>
+<body>
+    <% let n = data.length %>
+    <table>
+        <tr>
+            <td>user_id</td>
+            <td>email</td>
+            <td>password</td>
+        </tr>
+        <% for (let i = 0; i < n; i++) { %>
+        <tr>
+            <td><%= data[i].user_id %></td>
+            <td><%= data[i].email %></td>
+            <td><%= data[i].password %></td>
+        </tr>
+        <% } %>  
+    </table>  
+</body>
+</html>

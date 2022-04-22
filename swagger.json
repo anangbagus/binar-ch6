@@ -1,0 +1,571 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "API ini digunakan untuk menyelesaikan Challenge Chapter 5",
+    "version": "1.0.0",
+    "title": "Game Development",
+    "contact": {
+      "email": "anangbagus666@gmail.com"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/api",
+  "tags": [
+    {
+      "name": "user_game",
+      "description": "Semua method yang berhubungan dengan tabel user_game"
+    },
+    {
+      "name": "user_biodata",
+      "description": "Semua method yang berhubungan dengan tabel user_game_biodata"
+    },
+    {
+      "name": "user_history",
+      "description": "Semua method yang berhubungan dengan tabel user_game_history"
+    }
+  ],
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/user_game": {
+      "get": {
+        "tags": [
+          "user_game"
+        ],
+        "summary": "Mengambil dan menampilkan data tabel user_game",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user_game"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user_game"
+        ],
+        "summary": "Menambahkan data pada tabel user_game",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Object user_game yang diperlukan untuk menambahkan",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "game.develop@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "gamedev"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user_game/{user_id}": {
+      "get": {
+        "tags": [
+          "user_game"
+        ],
+        "summary": "Mengambil dan menampilkan data tabel user_game berdasarkan user_id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "ID dari user",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user_game"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user_game"
+        ],
+        "summary": "Menambahkan data pada tabel user_game",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "ID dari user",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Object user_game yang diperlukan untuk melakukan update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "game.develop@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "gamedev"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user_game"
+        ],
+        "summary": "Menghapus data pada tabel user_game",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "description": "ID dari user",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user_biodata": {
+      "get": {
+        "tags": [
+          "user_biodata"
+        ],
+        "summary": "Mengambil dan menampilkan data tabel user_biodata",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user_biodata"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user_biodata"
+        ],
+        "summary": "Menambahkan data pada tabel user_biodata",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Object user_biodata yang diperlukan untuk menambahkan",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userGameUserId": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "gamedev"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user_biodata/{bio_id}": {
+      "get": {
+        "tags": [
+          "user_biodata"
+        ],
+        "summary": "Mengambil dan menampilkan data tabel user_biodata berdasarkan bio_id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bio_id",
+            "in": "path",
+            "description": "ID dari biodata",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user_game"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user_biodata"
+        ],
+        "summary": "Menambahkan data pada tabel user_biodata",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bio_id",
+            "in": "path",
+            "description": "ID dari biodata",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Object user_biodata yang diperlukan untuk melakukan update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userGameUserId": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "name": {
+                  "type": "string",
+                  "example": "gamedevelop"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user_biodata"
+        ],
+        "summary": "Menghapus data pada tabel user_biodata",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "bio_id",
+            "in": "path",
+            "description": "ID dari biodata",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user_history": {
+      "get": {
+        "tags": [
+          "user_history"
+        ],
+        "summary": "Mengambil dan menampilkan data tabel user_history",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user_history"
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "user_history"
+        ],
+        "summary": "Menambahkan data pada tabel user_history",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Object user_history yang diperlukan untuk menambahkan",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userGameUserId": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "result": {
+                  "type": "string",
+                  "example": "win"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "successful operation"
+          }
+        }
+      }
+    },
+    "/user_history/{hist_id}": {
+      "get": {
+        "tags": [
+          "user_history"
+        ],
+        "summary": "Mengambil dan menampilkan data tabel user_history berdasarkan hist_id",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hist_id",
+            "in": "path",
+            "description": "ID dari history",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/user_game"
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "user_history"
+        ],
+        "summary": "Menambahkan data pada tabel user_history",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hist_id",
+            "in": "path",
+            "description": "ID dari history",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Object user_history yang diperlukan untuk melakukan update",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userGameUserId": {
+                  "type": "integer",
+                  "example": 1
+                },
+                "result": {
+                  "type": "string",
+                  "example": "draw"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "user_history"
+        ],
+        "summary": "Menghapus data pada tabel user_history",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "hist_id",
+            "in": "path",
+            "description": "ID dari history",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "successful operation"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "user_game": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "email": {
+          "type": "string",
+          "example": "game.develop@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "gamedev"
+        }
+      }
+    },
+    "user_biodata": {
+      "type": "object",
+      "properties": {
+        "bio_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "userGameUserId": {
+          "type": "integer",
+          "example": 1
+        },
+        "name": {
+          "type": "string",
+          "example": "gamedev"
+        }
+      }
+    },
+    "user_history": {
+      "type": "object",
+      "properties": {
+        "hist_id": {
+          "type": "integer",
+          "example": 1
+        },
+        "userGameUserId": {
+          "type": "integer",
+          "example": 1
+        },
+        "result": {
+          "type": "string",
+          "example": "win"
+        }
+      }
+    }
+  }
+}
