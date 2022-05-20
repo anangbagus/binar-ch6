@@ -18,8 +18,8 @@ db.user_game_history = require('../models/user_game_history.model')(sequelize, S
 db.user_game_biodata = require('../models/user_game_biodata.model')(sequelize, Sequelize)
 
 //association user_game
-db.user_game.hasMany(db.user_game_history, {foreignKey: 'userGameUserId'})
-db.user_game.hasOne(db.user_game_biodata, {foreignKey: 'userGameUserId'})
+db.user_game.hasMany(db.user_game_history, {foreignKey: {name: 'userGameUserId', allowNull: false}})
+db.user_game.hasOne(db.user_game_biodata, {foreignKey: {name: 'userGameUserId', allowNull: false}})
 
 //assoctiation user_game_biodata
 db.user_game_biodata.belongsTo(db.user_game)

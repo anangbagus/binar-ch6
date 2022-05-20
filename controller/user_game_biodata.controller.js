@@ -1,34 +1,39 @@
 const {user_game_biodata} = require('../config/config')
 
-const createBio = (req, res) => {
+const createBio = async (req, res) => {
     const { userGameUserId, name } = req.body
+    var last_id = 1
+    const data = await user_game_biodata.findAll()
+    if(data.length != 0) last_id = await data[data.length-1].bio_id + 1
     user_game_biodata.create({
+        bio_id: last_id,
         userGameUserId: userGameUserId,
         name: name
     }).then(response => {
         res.status(201).json({
             data : response,
-            message: "data berhasil ditambahkan"
+            message: "success created"
         })
     }).catch(err => {
-        res.status(200).json({
-            message: "tidak ada data"
-        })
         console.log(err)
+        res.status(400).json({
+            message: err.message
+        })
     })
 }
 
 const readAll = async (req, res) => {
     try {
         const data = await user_game_biodata.findAll()
-        if(!data){
+        if(data.length == 0){
             res.status(200).json({
                 data:data,
-                message: "tidak ada data"
+                message: "no data"
             })    
         }
         res.status(200).json({
-            data:data
+            data:data,
+            message: "success"
         })
     } catch (error) {
         console.log(error)
@@ -44,12 +49,12 @@ const readById = (req, res) => {
         if(!response){
             res.status(200).json({
                 data : response,
-                message: "tidak ada data"
+                message: "data not found"
             })
         }
         res.status(200).json({
             data : response,
-            message: "ada data"
+            message: "data obtained"
         })
     }).catch(err => {
         console.log(err)
@@ -71,7 +76,7 @@ const updateBio = async (req, res) => {
         }, query)
         .then(() => {
             res.status(200).json({
-                message: "data diupdate"
+                message: "data updated"
             })
         })
         .catch(err => {
@@ -81,24 +86,33 @@ const updateBio = async (req, res) => {
     else{
         res.status(200).json({
             data: data,
-            message: "tidak ada data"
+            message: "data not found"
         })
     }
 }
 
-const deleteBio = (req, res) => {
+const deleteBio = async (req, res) => {
     const id = req.params.id
-    user_game_biodata.destroy({
-        where: {
-            bio_id: id
-        }
-    }).then(() => {
-        res.status(200).json({
-            message: "data berhasil dihapus"
+    const data = await user_game_biodata.findByPk(id)
+    if(data){
+        user_game_biodata.destroy({
+            where: {
+                bio_id: id
+            }
+        }).then(() => {
+            res.status(200).json({
+                message: "data deleted"
+            })
+        }).catch(err => {
+            console.log(err)
         })
-    }).catch(err => {
-        console.log(err)
-    })
+    }
+    else {
+        res.status(200).json({
+            data: data,
+            message: "data not found"
+        })
+    }
 }
 
 module.exports = {readAll, readById, createBio, updateBio, deleteBio}

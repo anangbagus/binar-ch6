@@ -7,7 +7,8 @@ module.exports = (sequelize, Sequelize) => {
             allowNull: false
         },
         name: {
-            type: Sequelize.STRING(12)
+            type: Sequelize.STRING(12),
+            allowNull: false
         }
     })
 }
