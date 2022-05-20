@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --mode development --hot --open --port $PORT",
-    "build": "npm i -dev && webpack --mode production",
-    "heroku-postbuild": "npm build"
+    "start": "nodemon index.js"
   },
   "author": "",
   "license": "ISC",
