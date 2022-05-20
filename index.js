@@ -11,7 +11,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.set('view engine', 'ejs')
 app.use(router)
 
-app.listen(port, function(){
+app.listen(process.env.PORT, function(){
     console.log(`Server Listening to http://localhost:${port}`)
 })
 
