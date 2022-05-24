@@ -1,8 +1,8 @@
 const { Sequelize } = require('sequelize')
 const sequelize = new Sequelize(
-    "game_development",
-    "postgres",
-    "bagusqwer",
+    "d7il7qkivuhpo2",
+    "zdayaiolglobxp",
+    "a5cd47f815a17a5da1a488d503eb6088df06ddcfe7cefe3431d59c4f5bb949f1",
     {
         host: "127.0.0.1",
         dialect: "postgres"
