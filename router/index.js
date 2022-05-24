@@ -6,6 +6,6 @@ const swaggerUI = require("swagger-ui-express")
 
 router.use("/api", api)
 router.use("/views", view)
-router.use("/docs", swaggerUI.serve, swaggerUI.setup(swaggerJSON))
+router.use("/" || "/docs", swaggerUI.serve, swaggerUI.setup(swaggerJSON))
 
 module.exports = router
