@@ -8,7 +8,7 @@
       "email": "anangbagus666@gmail.com"
     }
   },
-  "host": "nameless-cove-65354.herokuapp.com/",
+  "host": "nameless-cove-65354.herokuapp.com",
   "basePath": "/api",
   "tags": [
     {
