@@ -5,7 +5,13 @@ const sequelize = new Sequelize(
     "a5cd47f815a17a5da1a488d503eb6088df06ddcfe7cefe3431d59c4f5bb949f1",
     {
         host: "ec2-52-86-115-245.compute-1.amazonaws.com",
-        dialect: "postgres"
+        dialect: "postgres",
+        "dialectOptions": { 
+            "ssl": {  
+              "require": true, 
+              "rejectUnauthorized": false 
+            }
+        }
     }
 )
 
