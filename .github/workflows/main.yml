@@ -26,5 +26,5 @@ jobs:
       - uses: akhileshns/heroku-deploy@v3.12.12
         with:
           heroku_api_key: "0ef720d5-5b99-4622-81e3-40bc92c17aec"
-          heroku_app_name: "binar-ch6"
+          heroku_app_name: "binar-chapter6"
           heroku_email: "anangbagus666@gmail.com"
